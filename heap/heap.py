@@ -13,7 +13,9 @@ class MinHeap:
     def heapify_up(self, index):
         while index // 2 > 0:
             if self.heap[index] < self.heap[index // 2]:
-                self.heap[index], self.heap[index // 2] = self.heap[index // 2], self.heap[index]
+                temp = self.heap[index]
+                self.heap[index] = self.heap[index // 2]
+                self.heap[index // 2] = temp
             index //= 2
 
     def delete(self):
@@ -28,7 +30,9 @@ class MinHeap:
         while index * 2 <= self.size:
             min_child = self.min_child(index)
             if self.heap[index] > self.heap[min_child]:
-                self.heap[index], self.heap[min_child] = self.heap[min_child], self.heap[index]
+                temp = self.heap[index]
+                self.heap[index] = self.heap[min_child]
+                self.heap[min_child] = temp
                 index = min_child
             else:
                 break
